@@ -1,0 +1,30 @@
+# Build directories
+build/
+cmake-build-*/
+
+# Coverage
+coverage/
+*.gcda
+*.gcno
+*.gcov
+
+# Doxygen output
+docs/doxygen/output/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Temporary files
+*.tmp
+*.bak
+*~
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
