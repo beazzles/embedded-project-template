@@ -156,7 +156,7 @@ Documentation consists of:
 - Doxygen API documentation
 
 ## CI/CD Strategy
-The repository is designed for GitHub Actions based automation.
+The repository is designed for *GitHub Actions* based automation.
 
 Typical pipline stages:
 1. Build
@@ -166,6 +166,30 @@ Typical pipline stages:
 5. Documentation Generation
 
 ## Commit Conventions
-This repository follows the Conventional Commits specification.
+This repository follows the *Conventional Commits* specification.
 
 See CONTRIBUTING.md for details.
+
+## Requirements Management
+This project uses a three-level requirements hierarchy:
+- SYS (System Requirements)
+- SWE (Software Requirements)
+- VER (Verification Requirements)
+
+Requirements should maintain traceability:
+
+SYS -> SWE -> VER
+
+Requirement IDs:
+- SYSxxx (System Requirements)
+- SWExxx (Software Requirements)
+- VERxxx (Verification Requirements)
+
+Doorstop is the recommended requirements management tool.
+
+### Doorstop Usage
+Recommended export formats:
+- Mardown
+- HTML
+
+Requirements are stored in the repository and remain accessible without Doorstop.

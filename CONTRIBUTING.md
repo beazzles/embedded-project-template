@@ -127,3 +127,18 @@ This project follows *Semantic Versioning*.
 
 #### Breaking Change
 1.0.0 -> 2.0.0
+
+## Requirements Structure
+The project uses a three-level requirements hierarchy:
+- SYS (System Requirements)
+- SWE (Software Requirements)
+- VER (Verification Requirements)
+
+Where practical, requirements should maintain traceability:
+
+SYS -> SWE -> VER
+
+Requirement IDs:
+- SYSxxx (System Requirements)
+- SWExxx (Software Requirements)
+- VERxxx (Verification Requirements)

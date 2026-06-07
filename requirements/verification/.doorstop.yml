@@ -1,0 +1,6 @@
+settings:
+  digits: 3
+  itemformat: markdown
+  parent: SWE
+  prefix: VER
+  sep: ''
