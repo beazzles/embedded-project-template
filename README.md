@@ -193,3 +193,22 @@ Recommended export formats:
 - HTML
 
 Requirements are stored in the repository and remain accessible without Doorstop.
+
+## Testing Strategy
+
+The project uses a multi-level testing strategy:
+
+- Unit Tests
+- Integration Tests
+- System Tests
+
+Directory layout:
+
+```text
+tests/
+├── unit/
+├── integration/
+└── system/
+```
+
+Coverage measurement is mandatory for unit tests.

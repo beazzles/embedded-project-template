@@ -142,3 +142,13 @@ Requirement IDs:
 - SYSxxx (System Requirements)
 - SWExxx (Software Requirements)
 - VERxxx (Verification Requirements)
+
+## Testing
+
+New functionality should be accompanied by:
+
+- Requirements (where applicable)
+- Unit Tests
+- Coverage updates
+
+Integration and system tests should be added when the feature spans multiple modules or system boundaries.
