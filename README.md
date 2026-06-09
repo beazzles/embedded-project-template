@@ -212,3 +212,50 @@ tests/
 ```
 
 Coverage measurement is mandatory for unit tests.
+
+## Build Architecture
+The project uses a Modern CMake architecture based on the following principles:
+- Hierarchical Project-Structure
+- Target-Based Architecture
+- Layered Software Architecture
+- Interface Libraries
+
+### Project Structure
+```text
+CMakeLists.txt
+cmake/
+modules/
+tests/
+```
+
+### Design Goals
+- Scalability
+- Maintainability
+- Testability
+- Reusability
+- CI/CD Integration
+
+### Module Ownership
+Each software module is responsible for:
+- Its own source files
+- Its own public headers
+- Its own build configuration
+
+### Shared Build Configuration
+Project-wide compiler settings, language standards and warning policies are implemented through dedicated CMake Interface Libraries.
+
+### Testing Integration
+The build architecture is designed to support:
+- Unit Tests
+- Integration Tests
+- System Tests
+- Coverage Analysis
+- Continuous Integration
+
+### Future Compatibility
+The architecture is intended to support:
+- STM32-based projects
+- Embedded Linux projects
+- Security-oriented projects
+- Edge AI projects
+- Distributed embedded systems
