@@ -8,5 +8,9 @@ project(
 
 include(cmake/ProjectOptions.cmake)
 include(cmake/ProjectWarnings.cmake)
+include(CTest)
+
+enable_testing()
 
 add_subdirectory(modules/status_led)
+add_subdirectory(tests)
