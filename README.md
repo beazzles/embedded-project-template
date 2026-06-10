@@ -259,3 +259,45 @@ The architecture is intended to support:
 - Security-oriented projects
 - Edge AI projects
 - Distributed embedded systems
+
+## Coverage
+The template supports host-based code coverage measurement for unit tests.
+
+Coverage measurement is implemented using:
+- GCC/gcov
+- gcovr
+
+Coverage instrumentation is disabled by default and must be enabled explicitly.
+
+### Configure Coverage Build
+```bash
+cmake -S . -B build -DENABLE_COVERAGE=ON
+```
+
+### Build
+```bash
+cmake --build build
+```
+
+### Run Tests
+```bash
+ctest --test-dir build
+```
+
+### Generate Coverage Summary
+```bash
+gcovr .
+```
+
+### Generate HTML Coverage Report
+```bash
+mkdir -p reports/coverage
+
+gcovr --root . --html --html-details -o reports/coverage/index.html
+```
+
+The generated report can be opened locally in a web browser.
+
+Coverage support is intended for verification activities and shall not be enabled for production firmware builds.
+
+See ADR--006 for rationale and architectural decisions.

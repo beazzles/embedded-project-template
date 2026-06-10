@@ -152,3 +152,10 @@ New functionality should be accompanied by:
 - Coverage updates
 
 Integration and system tests should be added when the feature spans multiple modules or system boundaries.
+
+## Coverage Expectations
+New functionality should be accompanied by appropriate unit tests.
+
+Developers are encouraged to review coverage reports whenn adding or modifying functionality.
+
+Coverage metrics are intended to support verification activities and should not be used as the sole indicator of software quality.
