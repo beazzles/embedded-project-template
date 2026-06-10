@@ -301,3 +301,88 @@ The generated report can be opened locally in a web browser.
 Coverage support is intended for verification activities and shall not be enabled for production firmware builds.
 
 See ADR--006 for rationale and architectural decisions.
+
+## Code Formatting
+The project uses *clang-format* for automated source code formatting.
+
+### Format a single file
+```bash
+clang-format -i path/to/file.c
+```
+
+### Format all project files
+```bash
+find . ( -name "*.c" -o -name "*.h" -o -name "*.cpp" -o -name "*.hpp") -exec clang-format -i {};
+```
+
+The formatting configuration is stored in *.clang-format*.
+
+## Code Quality
+
+The template supports automated formatting and static analysis.
+
+### clang-format
+
+Format a single file:
+
+```bash
+clang-format -i path/to/file.c
+```
+
+Format all source files:
+
+```bash
+find . ( -name "*.c" -o -name "*.h" -o -name "*.cpp" -o -name "*.hpp" ) -exec clang-format -i {} ;
+```
+
+The formatting configuration is stored in:
+
+```text
+.clang-format
+```
+
+### cppcheck
+
+Configure a build with cppcheck enabled:
+
+```bash
+cmake -S . -B build -DENABLE_CPPCHECK=ON
+```
+
+Build the project:
+
+```bash
+cmake --build build
+```
+
+### clang-tidy
+
+Configure a build with clang-tidy enabled:
+
+```bash
+cmake -S . -B build -DENABLE_CLANG_TIDY=ON
+```
+
+Build the project:
+
+```bash
+cmake --build build
+```
+
+clang-tidy uses the generated compile_commands.json database for project-aware analysis. :contentReference[oaicite:0]{index=0}
+
+The project configuration is stored in:
+
+```text
+.clang-tidy
+```
+
+### Combined Analysis
+
+```bash
+cmake -S . -B build -DENABLE_CPPCHECK=ON -DENABLE_CLANG_TIDY=ON
+
+cmake --build build
+```
+
+See ADR-007 for rationale and architectural decisions.

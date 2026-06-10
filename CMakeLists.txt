@@ -6,9 +6,12 @@ project(
     LANGUAGES C CXX
 )
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 include(cmake/ProjectOptions.cmake)
 include(cmake/ProjectWarnings.cmake)
 include(cmake/Coverage.cmake)
+include(cmake/StaticAnalysis.cmake)
 include(CTest)
 
 enable_testing()

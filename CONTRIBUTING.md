@@ -35,6 +35,40 @@ test(comm): add uart module tests
 ci(github): add build workflow  
 chore(template): update repository configuration
 
+## Changelog Maintenance
+
+All notable changes shall be recorded in `CHANGELOG.md`.
+
+Changes are added to the `[Unreleased]` section until the next release.
+
+Use the appropriate category:
+
+* Added
+* Changed
+* Deprecated
+* Removed
+* Fixed
+* Security
+
+Guidelines:
+
+* Focus on user-visible or contributor-relevant changes.
+* Keep entries concise and human-readable.
+* Do not duplicate commit messages.
+* Do not document every internal refactoring unless it affects contributors or users.
+* Update the changelog before creating a commit.
+* Changelog entries shall describe completed changes only.
+* Planned features, roadmap items, and future work shall not be added to the changelog until implementation has been completed.
+
+Typical workflow:
+
+1. Implement the change.
+2. Update documentation if required.
+3. Update `CHANGELOG.md`.
+4. Create the commit.
+5. Open a pull request.
+
+
 ## Branching Strategy
 The master branch shall remain in a buildable state.
 
@@ -159,3 +193,15 @@ New functionality should be accompanied by appropriate unit tests.
 Developers are encouraged to review coverage reports whenn adding or modifying functionality.
 
 Coverage metrics are intended to support verification activities and should not be used as the sole indicator of software quality.
+
+## Code Quality Expectations
+
+Contributors should ensure that:
+
+- Source files follow the project formatting rules.
+- New code passes cppcheck analysis.
+- New code passes clang-tidy analysis.
+- New functionality is accompanied by appropriate unit tests.
+- Coverage reports are reviewed when modifying existing functionality.
+
+Static analysis findings should be reviewed and resolved whenever practical.
