@@ -1,0 +1,39 @@
+name: Test
+
+on:
+    push:
+        branches:
+            - main
+    
+    pull_request:
+        branches:
+            - main
+        
+jobs:
+    test:
+        runs-on: ubuntu-24.04
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Install dependencies
+              run: |
+                sudo apt-get update
+                sudo apt-get upgrade -y \
+                  build-essential \
+                  cmake \
+                  ninja-build \
+                  pkg-config \
+                  libcpputest-dev
+
+            - name: Configure
+              run: |
+                cmake -S . -B build
+
+            - name: Build
+              run: |
+                cmake --build build
+
+            - name: Run unit tests
+              run: |
+                ctest --test-dir build --output-on-failure
