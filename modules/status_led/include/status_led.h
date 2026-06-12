@@ -4,12 +4,13 @@
 #include <stdbool.h>
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
-void StatusLED_Init(void);
-void StatusLED_Set(bool state);
-bool StatusLED_Get(void);
+    void StatusLED_Init(void);
+    void StatusLED_Set(bool state);
+    bool StatusLED_Get(void);
 
 #ifdef __cplusplus
 }

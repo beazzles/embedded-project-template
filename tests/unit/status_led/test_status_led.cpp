@@ -1,21 +1,16 @@
 #include "CppUTest/TestHarness.h"
 
-extern "C" 
+extern "C"
 {
 #include "status_led.h"
 }
 
-TEST_GROUP(StatusLED)
-{
-    void setup()
-    {
-        StatusLED_Init();
-    }
+TEST_GROUP(StatusLED){void setup(){StatusLED_Init();
+}
 
-    void teardown()
-    {
-    }
-};
+void teardown() {}
+}
+;
 
 TEST(StatusLED, InitialStateIsOff)
 {
@@ -32,6 +27,6 @@ TEST(StatusLED, SetFalseTurnsLedOff)
 {
     StatusLED_Set(true);
     StatusLED_Set(false);
-    
+
     CHECK_FALSE(StatusLED_Get());
 }
