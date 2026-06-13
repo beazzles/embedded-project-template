@@ -33,6 +33,7 @@ The format is based on Keep a Changelog and this project adheres to Semantic Ver
 - compile_commands.json generation
 - Development workflow documentation
 - Code quality workflow documentation
+- GitHub Actions workflow for automated clang-format verification
 
 ### Changed
 - Refined repository documentation and development workflow

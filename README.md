@@ -386,3 +386,34 @@ cmake --build build
 ```
 
 See ADR-007 for rationale and architectural decisions.
+
+## Continuous Quality Assurance
+
+Project quality is checked both locally and within the GitHub Actions CI pipeline.
+
+Tools used:
+- clang-format
+- clang-tidy
+- cppcheck
+- CppUTest
+- gcov / gcovr
+
+The goal is the early detection of:
+- Formatting errors
+- Static analysis errors
+- Test errors
+- Insufficient test coverage
+
+Local execution remains possible and is recommended. However, the CI pipeline is the primary reference for quality assessment.
+
+### Format Checking
+
+Compliance with formatting guidelines is automatically checked by GitHub Actions.
+
+The `format.yml` workflow runs clang-format in check mode and fails if the source code does not conform to the specifications in the `.clang-format` file.
+
+Local formatting:
+
+```bash
+clang-format -i <file>
+```

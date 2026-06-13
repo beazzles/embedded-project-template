@@ -205,3 +205,11 @@ Contributors should ensure that:
 - Coverage reports are reviewed when modifying existing functionality.
 
 Static analysis findings should be reviewed and resolved whenever practical.
+
+### Code Formatting
+
+All C and C++ source files must comply with the guidelines specified in the `.clang-format` project file.
+
+Compliance is automatically checked by the GitHub Actions pipeline.
+
+Before committing, modified files should be formatted locally using clang-format.
