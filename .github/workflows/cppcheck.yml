@@ -1,0 +1,32 @@
+name: Cppcheck
+
+on:
+    push:
+        branches:
+            - main
+    
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    cppcheck:
+        runs-on: ubuntu-24.04
+
+        steps: 
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Install cppcheck
+              run: |
+                sudo apt-get update
+                sudo apt-get install -y cppcheck
+
+            - name: Run cppcheck
+              run: |
+                cppcheck \
+                    --enable=warning,style,performance,portability \
+                    --error-exitcode=1 \
+                    --inline-suppr \
+                    -i build \
+                    .
