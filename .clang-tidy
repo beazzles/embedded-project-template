@@ -1,13 +1,16 @@
 Checks: >
+    -*,
     clang-analyzer-*,
     bugprone-*,
     performance-*,
     readability-*,
-    portability-*,
-    -readability-magic-numbers
+    cppcoreguidelines-*
 
-WarningsAsErrors: ''
+WarningsAsErrors: >
+    clang-analyzer-*,
+    bugprone-*,
+    performance-*
 
 HeaderFilterRegex: '.*'
 
-FormatStyle: file
+FormatStyle: none
