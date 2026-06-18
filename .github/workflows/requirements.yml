@@ -1,0 +1,36 @@
+name: Requirements
+
+on:
+    push:
+        branches:
+            - main
+
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    requirements:
+        runs-on: ubuntu-24.04
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Set up Python
+              uses: actions/setup-python@v5
+              with:
+                python-version: '3.x'
+
+            - name: Install Doorstop
+              run: |
+                python -m pip install --upgrade pip
+                pip install doorstop
+
+            - name: Validate requirements structure
+              run: |
+                doorstop
+
+            - name: Validate requirements traceability
+              run: |
+                doorstop --strict-child-check
