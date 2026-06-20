@@ -103,3 +103,14 @@ This decision ensures that every requirement remains traceable across the comple
 - Additional maintenance effort when creating requirements.
 - Developers must create and link requirements consistently.
 - Temporary work-in-progress requirements may fail validation until fully linked.
+- Doorstop v3.1 may report a false-positive warning when using
+  `--strict-child-check` despite correctly linked requirements.
+  The warning does not affect the command exit code and does not
+  prevent successful validation.
+
+  The project shall continue using `--strict-child-check`
+  because the additional traceability validation provides greater
+  value than the inconvenience of the known warning.
+
+  Future Doorstop versions should be re-evaluated to determine
+  whether this behavior has been resolved.

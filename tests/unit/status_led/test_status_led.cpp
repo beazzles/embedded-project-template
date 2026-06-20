@@ -12,6 +12,9 @@ void teardown() {}
 }
 ;
 
+// TST001
+// VER001
+
 TEST(StatusLED, InitialStateIsOff)
 {
     CHECK_FALSE(StatusLED_Get());
