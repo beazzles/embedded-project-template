@@ -9,6 +9,8 @@ The goals are:
 - Documentation quality
 - Automated verification
 
+Documentation, requirements, tests and source code are considered first-class project artifacts.
+
 ## Commit Convention
 This repository follows the *Conventional Commits* specification.
 
@@ -41,8 +43,9 @@ All notable changes shall be recorded in `CHANGELOG.md`.
 
 Changes are added to the `[Unreleased]` section until the next release.
 
-Use the appropriate category:
+The changelog follows the principles of *Keep a Changelog*.
 
+### Categories
 * Added
 * Changed
 * Deprecated
@@ -50,8 +53,7 @@ Use the appropriate category:
 * Fixed
 * Security
 
-Guidelines:
-
+### Guidelines
 * Focus on user-visible or contributor-relevant changes.
 * Keep entries concise and human-readable.
 * Do not duplicate commit messages.
@@ -60,14 +62,18 @@ Guidelines:
 * Changelog entries shall describe completed changes only.
 * Planned features, roadmap items, and future work shall not be added to the changelog until implementation has been completed.
 
-Typical workflow:
-
+### Typical workflow
 1. Implement the change.
 2. Update documentation if required.
 3. Update `CHANGELOG.md`.
 4. Create the commit.
 5. Open a pull request.
 
+### Release Process
+When creating a release:
+1. Move entries from `Unreleased` to the new version section.
+2. Add the release date.
+3. Create a new empty `Unreleased` section.
 
 ## Branching Strategy
 The master branch shall remain in a buildable state.
@@ -82,21 +88,61 @@ The master branch shall remain in a buildable state.
 ### Example
 feature/add-temperature-sensor
 
-## Code Quality
-Contributers should ensure:
-- Code formatting passes
-- Static analysis passes
-- Unit tests pass
-- Documentation is updated when necessary
+## Requirements Structure
+The project uses a three-level requirements hierarchy:
+- SYS (System Requirements)
+- SWE (Software Requirements)
+- VER (Verification Requirements)
+- TST (Test Specifications)
+
+The following traceability chain shall be maintained:
+```text
+SYS -> SWE -> VER -> TST
+```
+Requirement IDs:
+- SYSxxx
+- SWExxx
+- VERxxx
+- TSTxxx
 
 ## Requirements Traceability
 Changes affecting functionality should be traceable to documented requirements.
 
 Where practical:
-
+```text
 Requirements -> Implementation -> Test
-
+```
 shall be maintained.
+
+## Test Traceability
+All test implementations shall maintain bidirectional traceability to the corresponding artifacts.
+
+The following traceability chain shall be maintained:
+```text
+SYS -> SWE -> VER -> TST -> Test Implementation
+```
+Each unit test shall contain traceability annotations at individual test-case level.
+
+Required annotations:
+- *@req*
+- *@ver*
+- *@tst*
+
+### Example
+```code
+/**
+@req SWE001
+@ver VER001
+@tst TET001
+*/
+TEST(StatusLed, InitSetsLedOff)
+{
+    ...
+}
+```
+File-level traceability annotations shall not be used as the primary traceability mechanism.
+
+Traceability annotations are automatically verified by CI.
 
 ## Testing
 The following verification levels are supported:
@@ -104,7 +150,38 @@ The following verification levels are supported:
 - Integration Tests
 - System Tests
 
-New functionality should be accompanied by appropriate tests.
+New functionality should be accompanied by:
+- Requirements updates where applicable
+- Appropriate tests
+- Verification updates where applicable
+
+Integration and system tests should be added when functionality spans multiple modules or system boundaries.
+
+## Coverage Expectations
+New functionality should be accompanied by appropriate unit tests.
+
+Developers are encouraged to review coverage reports whenn adding or modifying functionality.
+
+Coverage metrics are intended to support verification activities and should not be used as the sole indicator of software quality.
+
+## Code Quality
+Contributers should ensure that:
+- Source files follow project formatting rules.
+- New code passes cppcheck analysis.
+- New code passes clang-tidy analysis.
+- New functionality is accompanied by appropriate unit tests.
+- Coverage reports are reviewed when modifying existing functionality.
+- Documentation is updated when necessary.
+
+Static-analysis findings should be reviewed and resolved whenever practical.
+
+
+## Code Formatting
+All C and C++ source files shall comply with the rules defined in *.clang-format*.
+
+Compliance is automatically verified by CI.
+
+Before committing, modified files should be formatted locally using clang-format.
 
 ## Documentation
 The following documentation shall be maintained:
@@ -120,96 +197,25 @@ All contributions should be compatible with the CI/CD pipeline.
 
 Future workflows may automatically verify:
 - Commit message format
+- Requirements validation
+- Requirements traceability
 - Build success
 - Static analysis
 - Test execution
 - Coverage generation
 - Documentation generation
 
-## Changelog Management
-This repository maintains a CHANGELOG.md file.
-
-The changelog follows the principles of *Keep a Changelog*.
-
-### Categories
-Use the following categories where applicable:
-- Added
-- Changed
-- Deprecated
-- Removed
-- Fixed
-- Security
-
-### Unreleased Section
-New changes should first be added to the *Unreleased* section.
-
-### Release Process
-When creating a release:
-1. Move entries from *Unreleased* to the new version section.
-2. Add the release date.
-3. Create a new empty *Unreleased* section
+Contributors should not intentionally break any CI quality gate.
 
 ## Semantic Versioning
 This project follows *Semantic Versioning*.
 
-### Examples
-#### Bugfix
+### Bugfix
 1.0.0 -> 1.0.1
 
-#### New feature
+### New feature
 1.0.0 -> 1.1.0
 
-#### Breaking Change
+### Breaking Change
 1.0.0 -> 2.0.0
 
-## Requirements Structure
-The project uses a three-level requirements hierarchy:
-- SYS (System Requirements)
-- SWE (Software Requirements)
-- VER (Verification Requirements)
-
-Where practical, requirements should maintain traceability:
-
-SYS -> SWE -> VER
-
-Requirement IDs:
-- SYSxxx (System Requirements)
-- SWExxx (Software Requirements)
-- VERxxx (Verification Requirements)
-
-## Testing
-
-New functionality should be accompanied by:
-
-- Requirements (where applicable)
-- Unit Tests
-- Coverage updates
-
-Integration and system tests should be added when the feature spans multiple modules or system boundaries.
-
-## Coverage Expectations
-New functionality should be accompanied by appropriate unit tests.
-
-Developers are encouraged to review coverage reports whenn adding or modifying functionality.
-
-Coverage metrics are intended to support verification activities and should not be used as the sole indicator of software quality.
-
-## Code Quality Expectations
-
-Contributors should ensure that:
-
-- Source files follow the project formatting rules.
-- New code passes cppcheck analysis.
-- New code passes clang-tidy analysis.
-- New functionality is accompanied by appropriate unit tests.
-- Coverage reports are reviewed when modifying existing functionality.
-
-Static analysis findings should be reviewed and resolved whenever practical.
-
-### Code Formatting
-
-All C and C++ source files must comply with the guidelines specified in the `.clang-format` project file.
-
-Compliance is automatically checked by the GitHub Actions pipeline.
-
-Before committing, modified files should be formatted locally using clang-format.

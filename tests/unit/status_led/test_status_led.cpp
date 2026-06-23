@@ -5,27 +5,46 @@ extern "C"
 #include "status_led.h"
 }
 
-TEST_GROUP(StatusLED){void setup(){StatusLED_Init();
-}
+// clang-format off
+TEST_GROUP(StatusLED)
+{
+    void setup()
+    {
+        StatusLED_Init();
+    }
 
-void teardown() {}
-}
-;
+    void teardown() 
+    {
+    }
+};
+// clang-format on
 
-// TST001
-// VER001
-
+/**
+ * @req SWE001
+ * @ver VER001
+ * @tst TST001
+ */
 TEST(StatusLED, InitialStateIsOff)
 {
     CHECK_FALSE(StatusLED_Get());
 }
 
+/**
+ * @req SWE001
+ * @ver VER001
+ * @tst TST001
+ */
 TEST(StatusLED, SetTrueTurnsLedOn)
 {
     StatusLED_Set(true);
     CHECK_TRUE(StatusLED_Get());
 }
 
+/**
+ * @req SWE001
+ * @ver VER001
+ * @tst TST001
+ */
 TEST(StatusLED, SetFalseTurnsLedOff)
 {
     StatusLED_Set(true);

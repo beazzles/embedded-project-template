@@ -1,0 +1,22 @@
+name: Traceability
+
+on:
+    push:
+        branches:
+            - main
+
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    traceability:
+        runs-on: ubuntu-24.04
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Check test traceability
+              run: |
+                scripts/traceability/check_test_traceability.sh
