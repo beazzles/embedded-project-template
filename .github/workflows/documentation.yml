@@ -1,0 +1,29 @@
+name: Documentation
+
+on:
+    push:
+        branches:
+            - main
+
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    documentation:
+        runs-on: ubuntu-24.04
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Install Doxygen
+              run: |
+                sudo apt-get update
+                sudo apt-get install -y \
+                    doxygen \
+                    graphviz
+
+            - name: Generate documentation
+              run: |
+                doxygen docs/Doxyfile
