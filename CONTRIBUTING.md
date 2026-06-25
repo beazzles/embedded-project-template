@@ -192,6 +192,12 @@ The following documentation shall be maintained:
 
 Documentation is considered part of the project deliverables.
 
+API documentation is generated using Doxygen.
+
+Public interfaces should be documented directly in header files using Doxygen-compatible comments.
+
+Generated documentation is considered a build artifact and shall not be committed to the repository.
+
 ## Continuous Integration
 All contributions should be compatible with the CI/CD pipeline.
 
