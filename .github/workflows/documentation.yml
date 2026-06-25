@@ -27,3 +27,9 @@ jobs:
             - name: Generate documentation
               run: |
                 doxygen docs/Doxyfile
+
+            - name: Upload documentation artifact
+              uses: actions/upload-artifact@v4
+              with:
+                name: doxygen-html
+                path: docs/doxygen/html
