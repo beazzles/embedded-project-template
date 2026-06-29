@@ -46,6 +46,42 @@ Critical production fixes may be introduced using dedicated _hotfix/*_ branches.
 
 Deployment branches containing generated artifacts shall not be treated as development branches.
 
+## Repository Governance
+
+The repository shall distinguish between permanent development branches,
+temporary development branches and deployment branches.
+
+Repository governance shall protect the integrity of permanent branches while
+keeping temporary development branches lightweight and suitable for day-to-day
+development.
+
+The following governance principles apply:
+
+| Branch Type | Pull Requests | Force Push | Branch Deletion |
+|-------------|---------------|------------|-----------------|
+| `main` | Required | Prohibited | Prohibited |
+| `develop` | Required | Prohibited | Prohibited |
+| `feature/*` | Not required | Prohibited | Permitted |
+| `fix/*` | Not required | Prohibited | Permitted |
+| `hotfix/*` | Not required | Prohibited | Permitted |
+| `gh-pages` | Managed exclusively by CI | Managed by CI | Managed by CI |
+
+Permanent branches shall only receive changes through Pull Requests.
+
+Temporary development branches are intended to be short-lived and shall be
+deleted after successful integration.
+
+Deployment branches are not part of the software development workflow.
+They shall be governed independently from development branches and managed
+exclusively by automated tooling.
+
+The governance principles defined by this ADR shall remain independent of any
+specific repository hosting platform.
+
+Repository hosting services (e.g. GitHub, GitLab or Azure DevOps) may enforce
+these rules using their respective branch protection or repository governance
+mechanisms.
+
 ## Consequences
 ### Advantages
 - Clear separation between development and stable releases.
