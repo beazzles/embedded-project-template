@@ -97,3 +97,14 @@ Rejected because:
 ## References
 - ADR-008: GitHub Actions Workflow
 - ADR-014: Automated API Documentation Generation
+
+## Implementation Status
+Reference implementation completed.
+
+The documentation publication pipeline automatically:
+
+- generates Doxygen documentation,
+- publishes the generated HTML documentation,
+- deploys the generated artifacts to GitHub Pages.
+
+The publication mechanism is independent from the documentation generator itself and may later be adapted to alternative publication targets while preserving the documentation generation workflow.
