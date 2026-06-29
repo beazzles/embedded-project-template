@@ -76,17 +76,42 @@ When creating a release:
 3. Create a new empty `Unreleased` section.
 
 ## Branching Strategy
-The master branch shall remain in a buildable state.
 
-### Recommended workflow
-1. Create a feature branch.
+The repository follows a simplified GitFlow-inspired branching strategy.
+
+### Permanent branches
+
+| Branch | Purpose |
+|---------|----------|
+| `main` | Stable released project state |
+| `develop` | Integration branch for completed features |
+
+### Temporary branches
+
+| Branch | Purpose |
+|---------|----------|
+| `feature/*` | New functionality |
+| `fix/*` | Non-critical bug fixes |
+| `hotfix/*` | Critical fixes for released versions |
+
+### Deployment branches
+
+| Branch | Purpose |
+|---------|----------|
+| `gh-pages` | Automatically generated documentation artifacts |
+
+### Development Workflow
+
+1. Create a feature branch from `develop`.
 2. Implement the change.
 3. Run local verification.
-4. Create a pull request.
-5. Merge after review.
+4. Open a Pull Request targeting `develop`.
+5. Merge after successful review and CI.
+6. Periodically merge `develop` into `main` to create a new stable release.
 
-### Example
-feature/add-temperature-sensor
+Direct commits to permanent branches are not permitted.
+
+The `main` branch shall always represent a stable and releasebale project state.
 
 ## Requirements Structure
 The project uses a three-level requirements hierarchy:
