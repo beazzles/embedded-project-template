@@ -261,46 +261,52 @@ The architecture is intended to support:
 - Distributed embedded systems
 
 ## Coverage
-The template supports host-based code coverage measurement for unit tests.
 
-Coverage measurement is implemented using:
-- GCC/gcov
-- gcovr
+The Engineering Platform supports host-based code coverage measurement for unit tests.
+
+Coverage measurement is implemented using GCC coverage instrumentation and `gcovr`.
 
 Coverage instrumentation is disabled by default and must be enabled explicitly.
 
 ### Configure Coverage Build
+
 ```bash
 cmake -S . -B build -DENABLE_COVERAGE=ON
 ```
 
 ### Build
+
 ```bash
 cmake --build build
 ```
 
 ### Run Tests
+
 ```bash
-ctest --test-dir build
+ctest --test-dir build --output-on-failure
 ```
 
-### Generate Coverage Summary
+### Generate Coverage Reports
+
 ```bash
-gcovr .
+./scripts/ci/coverage.sh
 ```
 
-### Generate HTML Coverage Report
-```bash
-mkdir -p reports/coverage
+The coverage script generates the following reports:
 
-gcovr --root . --html --html-details -o reports/coverage/index.html
+```text
+reports/
+└── coverage/
+    ├── index.html
+    └── coverage.xml
 ```
 
-The generated report can be opened locally in a web browser.
+- `index.html` provides a human-readable coverage report.
+- `coverage.xml` provides a machine-readable report for Continuous Integration systems and future quality gates.
 
 Coverage support is intended for verification activities and shall not be enabled for production firmware builds.
 
-See ADR--006 for rationale and architectural decisions.
+See ADR-006 for the coverage architecture and ADR-017 for the coverage reporting strategy.
 
 ## Code Formatting
 The project uses *clang-format* for automated source code formatting.
