@@ -86,3 +86,20 @@ It intentionally does not define:
 - external reporting services.
 
 These topics may be addressed by future Architecture Decision Records as the Engineering Platform evolves.
+
+## Implementation Status
+This Architecture Decision Record has been fully implemented.
+
+The Engineering Platform now provides automated code coverage reporting for both local development and Continuous Integration.
+
+The implementation includes:
+
+- Coverage instrumentation using GCC coverage support.
+- Automated coverage report generation via `scripts/ci/coverage.sh`.
+- Human-readable HTML coverage reports.
+- Machine-readable Cobertura XML coverage reports.
+- Automatic coverage report generation during the CI test workflow.
+- Publication of coverage reports as GitHub Actions artifacts.
+- Updated project documentation describing the unified coverage workflow.
+
+Coverage thresholds and release quality gates are intentionally outside the scope of this Architecture Decision Record and will be addressed by future ADRs covering release management.
