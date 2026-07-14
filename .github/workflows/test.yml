@@ -26,11 +26,12 @@ jobs:
                   cmake \
                   ninja-build \
                   pkg-config \
-                  libcpputest-dev
+                  libcpputest-dev \
+                  gcovr
 
             - name: Configure
               run: |
-                cmake -S . -B build
+                cmake -S . -B build -DENABLE_COVERAGE=ON
 
             - name: Build
               run: |
@@ -39,3 +40,13 @@ jobs:
             - name: Run unit tests
               run: |
                 ctest --test-dir build --output-on-failure
+
+            - name: Generate coverage report
+              run: |
+                ./scripts/ci/coverage.sh
+
+            - name: Upload coverage reports
+              uses: actions/upload-artifact@v4
+              with:
+                name: coverage-reports
+                path: reports/coverage/
