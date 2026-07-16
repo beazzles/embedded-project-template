@@ -423,3 +423,18 @@ Local formatting:
 ```bash
 clang-format -i <file>
 ```
+### Generate Test Report
+
+```bash
+./scripts/ci/test.sh
+```
+
+The generated JUnit report is stored in:
+
+```text
+reports/
+└── tests/
+    └── junit.xml
+```
+
+The report is intended for Continuous Integration systems and automated verification workflows.

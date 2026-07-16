@@ -39,7 +39,13 @@ jobs:
 
             - name: Run unit tests
               run: |
-                ctest --test-dir build --output-on-failure
+                ./scripts/ci/test.sh
+
+            - name: Upload test reports
+              uses: actions/upload-artifact@v4
+              with:
+                name: test-results
+                path: reports/tests/
 
             - name: Generate coverage report
               run: |
